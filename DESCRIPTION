@@ -3,7 +3,7 @@ Title: Utilities for Aggregating Probabilistic Forecasts
 Version: 0.0.0.9000
 Authors@R: 
     person("Molly", "Hickman", , "molly@forecastingresearch.org", role = c("aut", "cre"),
-           comment = c(ORCID = "0009-0007-5144-0080")),
+           comment = c(ORCID = "0009-0007-5144-0080"))
     person("Zach", "Jacobs", , "zach@forecastingresearch.org", role = c("aut", "cre"))
 Description: This package provides several methods for aggregating probabilistic forecasts. You have
     a group of people who have made probabilistic forecasts for the same event. You want to take

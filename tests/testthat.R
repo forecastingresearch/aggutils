@@ -7,6 +7,6 @@
 # * https://testthat.r-lib.org/reference/test_package.html#special-files
 
 library(testthat)
-library(foreagg)
+library(aggutils)
 
-test_check("foreagg")
+test_check("aggutils")
