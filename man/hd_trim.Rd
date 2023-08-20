@@ -7,15 +7,14 @@
 hd_trim(x, p = 0.1)
 }
 \arguments{
-\item{x}{A vector of forecasts}
+\item{x}{Vector of forecasts in 0 to 100 range (\%)}
 
 \item{p}{The proportion of forecasts to trim (between 0 and 1)}
 }
 \description{
-This code comes from an email from Ben Powell.
-
-You find the shortest interval containing (1-p) * 100\% of the data and take
-the mean of the forecasts within that interval.
+From Powell et al. (2022) \url{doi:10.1037/dec0000191}. You find
+the shortest interval containing (1-p) * 100\% of the data and take the mean
+of the forecasts within that interval.
 }
 \note{
 As p gets bigger this acts like a mode in a similar way to

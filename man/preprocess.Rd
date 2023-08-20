@@ -16,5 +16,5 @@ This does the preprocessing steps that all the agg methods
 have in common.
 }
 \note{
-ASSUMES FORECASTS ARE IN THE RANGE \link{0, 100}!
+Assumes forecasts are in the range 0 to 100, inclusive.
 }

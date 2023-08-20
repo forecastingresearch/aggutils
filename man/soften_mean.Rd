@@ -7,14 +7,14 @@
 soften_mean(x, p = 0.1)
 }
 \arguments{
-\item{x}{A vector of forecasts}
+\item{x}{Vector of forecasts in 0 to 100 range (\%)}
 
-\item{trim}{The proportion of forecasts to trim from each end (between 0
+\item{p}{The proportion of forecasts to trim from each end (between 0
 and 1)}
 }
 \description{
-If the mean is > .5, trim the top trim\%; if < .5, the bottom trim\%. Return
-the new mean (i.e. soften the mean).
+If the mean is > .5, trim the top trim\%; if < .5, the bottom
+trim\%. Return the new mean (i.e. soften the mean).
 }
 \note{
 This goes against usual wisdom of extremizing the mean, but performs

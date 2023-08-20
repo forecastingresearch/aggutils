@@ -1,6 +1,6 @@
 Package: aggutils
 Title: Utilities for Aggregating Probabilistic Forecasts
-Version: 0.0.0.9000
+Version: 0.0.1.0000
 Authors@R: 
     person("Molly", "Hickman", , "molly@forecastingresearch.org", role = c("aut", "cre"),
            comment = c(ORCID = "0009-0007-5144-0080"))
@@ -9,13 +9,14 @@ Description: This package provides several methods for aggregating probabilistic
     a group of people who have made probabilistic forecasts for the same event. You want to take
     advantage of the "wisdom of the crowd" and combine these forecasts in some sensible way. This
     package provides implementations of several strategies, including geometric mean of odds,
-    trimmed mean, and an extremized aggregate (Eric Neyman, Tim Roughgarden (2021)
-    <doi:10.48550/arXiv.2111.03153>).
+    an extremized aggregate (Neyman, Roughgarden (2021) <doi:10.1145/3490486.3538243>), and
+    ``high-density trimmed mean" (Powell et al. (2022) <doi:10.1037/dec0000191>).
 License: `use_mit_license()`, `use_gpl3_license()` or friends to pick a
     license
 Encoding: UTF-8
 Roxygen: list(markdown = TRUE)
 RoxygenNote: 7.2.3
 Imports: 
-    data.table,
-    docstring
+    stats,
+    docstring,
+    testthat

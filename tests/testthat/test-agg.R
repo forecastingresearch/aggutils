@@ -41,3 +41,15 @@ test_that("It works when they're all 0", {
   # What about geometric mean of odds?
   expect_equal(geoMeanOfOddsCalc(forecasts), 0)
 })
+
+test_that("Geo mean of odds of (a, b, c) and of (1-a, 1-b, 1-c) sums to 1", {
+  vecGMOD <- geoMeanOfOddsCalc(c(70, 20, 10))
+  recipVecGMOD <- geoMeanOfOddsCalc(c(30, 80, 90))
+  expect_equal(vecGMOD + recipVecGMOD, 100)
+})
+
+test_that("Same but directly provide odds", {
+  vecGMOD <- geoMeanOfOddsCalc(c(3./1., 1./2., 5./2.), odds = TRUE)
+  recipVecGMOD <- geoMeanOfOddsCalc(c(1./3., 2./1., 2./5.), odds = TRUE)
+  expect_equal(vecGMOD + recipVecGMOD, 100)
+})

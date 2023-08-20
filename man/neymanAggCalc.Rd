@@ -7,21 +7,19 @@
 neymanAggCalc(x)
 }
 \arguments{
-\item{x}{A vector of forecasts}
+\item{x}{Vector of forecasts in 0 to 100 range (\%)}
 }
 \description{
-Origin: Neyman and Roughgarden 2021
-See also Jaime Savilla's post on the EA Forum about it.
+Takes the arithmetic mean of the log odds of the forecasts,
+then extremizes the mean by a factor d, where d is
 
-Extremizes the aggregated forecast by a factor of:
 (n*(sqrt((3\emph{n^2) - (3}n) + 1) - 2))/(n^2 - n - 1)
+
 where n is the number of forecasts.
-}
-\note{
-Expects forecasts to be in the range \link{0, 100}!
 }
 \references{
 Neyman, E. and Roughgarden, T. (2021). Are you
 smarter than a random expert? The robust aggregation of substitutable
-signals. \verb{https://arxiv.org/abs/2111.03153}
+signals. \verb{https://arxiv.org/abs/2111.03153}. Also Jaime Sevilla's EAF post
+``Principled extremizing of aggregated forecasts."
 }
