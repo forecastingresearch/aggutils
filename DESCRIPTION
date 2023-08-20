@@ -11,12 +11,12 @@ Description: This package provides several methods for aggregating probabilistic
     package provides implementations of several strategies, including geometric mean of odds,
     an extremized aggregate (Neyman, Roughgarden (2021) <doi:10.1145/3490486.3538243>), and
     ``high-density trimmed mean" (Powell et al. (2022) <doi:10.1037/dec0000191>).
-License: `use_mit_license()`, `use_gpl3_license()` or friends to pick a
-    license
+License: MIT + file LICENSE
 Encoding: UTF-8
 Roxygen: list(markdown = TRUE)
 RoxygenNote: 7.2.3
 Imports: 
     stats,
-    docstring,
+    docstring
+Suggests:
     testthat
