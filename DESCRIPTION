@@ -5,6 +5,8 @@ Authors@R:
     person("Molly", "Hickman", , "molly@forecastingresearch.org", role = c("aut", "cre"),
            comment = c(ORCID = "0009-0007-5144-0080"))
     person("Zach", "Jacobs", , "zach@forecastingresearch.org", role = c("aut", "cre"))
+Maintainer@R: Molly Hickman <molly@forecastingresearch.org>
+BugReports: <https://github.com/forecastingresearch/aggutils/issues>
 Description: This package provides several methods for aggregating probabilistic forecasts. You have
     a group of people who have made probabilistic forecasts for the same event. You want to take
     advantage of the "wisdom of the crowd" and combine these forecasts in some sensible way. This
@@ -16,7 +18,7 @@ Encoding: UTF-8
 Roxygen: list(markdown = TRUE)
 RoxygenNote: 7.2.3
 Imports: 
-    stats,
-    docstring
+    stats
 Suggests:
-    testthat
+    testthat,
+    docstring
