@@ -20,6 +20,6 @@ where n is the number of forecasts.
 \references{
 Neyman, E. and Roughgarden, T. (2021). Are you
 smarter than a random expert? The robust aggregation of substitutable
-signals. \verb{https://arxiv.org/abs/2111.03153}. Also Jaime Sevilla's EAF post
+signals: \doi{10.1145/3490486.3538243}. Also Jaime Sevilla's EAF post
 ``Principled extremizing of aggregated forecasts."
 }

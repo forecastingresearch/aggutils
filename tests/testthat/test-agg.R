@@ -1,5 +1,4 @@
 library(testthat)
-library(data.table)
 
 forecasts <- c(rep(.1, 5), rep(.2, 5), rep(.4, 5), rep(.5, 2), .8, .9, 1.0)
 

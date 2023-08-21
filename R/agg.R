@@ -54,7 +54,7 @@ trim <- function(x, p = 0.1) {
 hd_trim <- function(x, p = 0.1) {
   #' Highest-Density Trimmed Mean
   #'
-  #' @description From Powell et al. (2022) <doi:10.1037/dec0000191>. You find
+  #' @description From Powell et al. (2022) \doi{10.1037/dec0000191}. You find
   #' the shortest interval containing (1-p) * 100% of the data and take the mean
   #' of the forecasts within that interval.
   #'
@@ -120,7 +120,7 @@ neymanAggCalc <- function(x) {
   #' @param x Vector of forecasts in 0 to 100 range (%)
   #' @references Neyman, E. and Roughgarden, T. (2021). Are you
   #' smarter than a random expert? The robust aggregation of substitutable
-  #' signals. `https://arxiv.org/abs/2111.03153`. Also Jaime Sevilla's EAF post
+  #' signals: \doi{10.1145/3490486.3538243}. Also Jaime Sevilla's EAF post
   #' ``Principled extremizing of aggregated forecasts."
   #'
   #' @export
