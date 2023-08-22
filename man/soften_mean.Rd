@@ -12,6 +12,9 @@ soften_mean(x, p = 0.1)
 \item{p}{The proportion of forecasts to trim from each end (between 0
 and 1)}
 }
+\value{
+(numeric) The softened mean of the vector
+}
 \description{
 If the mean is > .5, trim the top trim\%; if < .5, the bottom
 trim\%. Return the new mean (i.e. soften the mean).

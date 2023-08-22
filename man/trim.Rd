@@ -13,7 +13,7 @@ trim(x, p = 0.1)
 1)}
 }
 \value{
-The trimmed mean
+(numeric) The trimmed mean of the vector
 }
 \description{
 Trim the top and bottom (p*100)\% of forecasts

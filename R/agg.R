@@ -9,6 +9,8 @@ preprocess <- function(x, q = 0) {
   #'
   #' @param x A vector of forecasts
   #' @param q The quantile to use for replacing 0s and 1s (between 0 and 1)
+  #' @return A vector of forecasts with 0s are replaced by the qth quantile and
+  #' 100s are replaced by the (1 - q)th quantile.
   #'
   #' @importFrom stats quantile
   #'
@@ -39,7 +41,7 @@ trim <- function(x, p = 0.1) {
   #' @param x Vector of forecasts in 0 to 100 range (%)
   #' @param p The proportion of forecasts to trim from each end (between 0 and
   #' 1)
-  #' @return The trimmed mean
+  #' @return (numeric) The trimmed mean of the vector
   #'
   #' @export
 
@@ -63,6 +65,7 @@ hd_trim <- function(x, p = 0.1) {
   #'
   #' @param x Vector of forecasts in 0 to 100 range (%)
   #' @param p The proportion of forecasts to trim (between 0 and 1)
+  #' @return (numeric) The highest-density trimmed mean of the vector
   #'
   #' @export
 
@@ -92,7 +95,7 @@ soften_mean <- function(x, p = 0.1) {
   #' @param x Vector of forecasts in 0 to 100 range (%)
   #' @param p The proportion of forecasts to trim from each end (between 0
   #' and 1)
-  #'
+  #' @return (numeric) The softened mean of the vector
   #' @note This goes against usual wisdom of extremizing the mean, but performs
   #' well when the crowd has some overconfident forecasters in it.
   #'
@@ -118,6 +121,7 @@ neymanAggCalc <- function(x) {
   #' where n is the number of forecasts.
   #'
   #' @param x Vector of forecasts in 0 to 100 range (%)
+  #' @return (numeric) The extremized mean of the vector
   #' @references Neyman, E. and Roughgarden, T. (2021). Are you
   #' smarter than a random expert? The robust aggregation of substitutable
   #' signals: \doi{10.1145/3490486.3538243}. Also Jaime Sevilla's EAF post
@@ -142,6 +146,7 @@ geoMeanCalc <- function(x, q = 0.05) {
   #'
   #' @param x Vector of forecasts in 0 to 100 range (%)
   #' @param q The quantile to use for replacing 0s (between 0 and 1)
+  #' @return (numeric) The geometric mean of the vector
   #' @note agg(a) + agg(not a) does not sum to 1 for this aggregation method.
   #'
   #' @export
@@ -161,6 +166,7 @@ geoMeanOfOddsCalc <- function(x, q = 0.05, odds = FALSE) {
   #' @param x A vector of forecasts (probabilities! unless odds = TRUE)
   #' @param q The quantile to use for replacing 0s (between 0 and 1)
   #' @param odds Whether x is already in odds form (TRUE) or probabilities
+  #' @return (numeric) The geometric mean of the odds
   #' @note agg(a) + agg(not a) does not sum to 1 for this aggregation method.
   #'
   #' @export

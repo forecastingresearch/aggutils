@@ -11,6 +11,9 @@ hd_trim(x, p = 0.1)
 
 \item{p}{The proportion of forecasts to trim (between 0 and 1)}
 }
+\value{
+(numeric) The highest-density trimmed mean of the vector
+}
 \description{
 From Powell et al. (2022) \doi{10.1037/dec0000191}. You find
 the shortest interval containing (1-p) * 100\% of the data and take the mean

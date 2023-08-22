@@ -11,6 +11,9 @@ geoMeanCalc(x, q = 0.05)
 
 \item{q}{The quantile to use for replacing 0s (between 0 and 1)}
 }
+\value{
+(numeric) The geometric mean of the vector
+}
 \description{
 Calculate the geometric mean of a vector of forecasts. We handle 0s by
 replacing them with the qth quantile of the non-zero forecasts.

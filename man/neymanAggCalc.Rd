@@ -9,6 +9,9 @@ neymanAggCalc(x)
 \arguments{
 \item{x}{Vector of forecasts in 0 to 100 range (\%)}
 }
+\value{
+(numeric) The extremized mean of the vector
+}
 \description{
 Takes the arithmetic mean of the log odds of the forecasts,
 then extremizes the mean by a factor d, where d is

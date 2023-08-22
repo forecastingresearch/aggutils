@@ -13,6 +13,9 @@ geoMeanOfOddsCalc(x, q = 0.05, odds = FALSE)
 
 \item{odds}{Whether x is already in odds form (TRUE) or probabilities}
 }
+\value{
+(numeric) The geometric mean of the odds
+}
 \description{
 Convert probabilities to odds, and calculate the geometric mean of the
 odds. We handle 0s by replacing them with the qth quantile of the non-zero
