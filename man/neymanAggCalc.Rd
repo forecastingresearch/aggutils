@@ -7,7 +7,7 @@
 neymanAggCalc(x)
 }
 \arguments{
-\item{x}{Vector of forecasts in 0 to 100 range (\%)}
+\item{x}{Vector of forecasts in 0 to 1 range}
 }
 \value{
 (numeric) The extremized mean of the vector

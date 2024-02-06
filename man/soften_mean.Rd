@@ -7,7 +7,7 @@
 soften_mean(x, p = 0.1)
 }
 \arguments{
-\item{x}{Vector of forecasts in 0 to 100 range (\%)}
+\item{x}{Vector of forecasts in 0 to 1 range}
 
 \item{p}{The proportion of forecasts to trim from each end (between 0
 and 1)}
