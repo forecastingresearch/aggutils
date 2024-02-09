@@ -10,11 +10,15 @@ preprocess <- function(x, q = 0) {
   #' @param x A vector of forecasts
   #' @param q The quantile to use for replacing 0s and 1s (between 0 and 1)
   #' @return A vector of forecasts with 0s are replaced by the qth quantile and
-  #' 100s are replaced by the (1 - q)th quantile.
+  #' 1s are replaced by the (1 - q)th quantile.
   #'
   #' @importFrom stats quantile
   #'
-  #' @note Assumes forecasts are in the range 0 to 100, inclusive.
+  #' @note Assumes forecasts are in the range 0 to 1, inclusive.
+
+  if (any(x > 1) || any(x < 0)) {
+    stop("Forecasts must be in the range 0 to 1")
+  }
 
   x <- sort(x)
   x <- x[!is.na(x) & !is.nan(x)]
@@ -23,10 +27,10 @@ preprocess <- function(x, q = 0) {
     if (all(x == 0)) {
       # Replace them with 10^-12
       return(rep(10^-12, length(x)))
-    } else if (all(x == 100)) {
-      return(rep(100 - 10^-12, length(x)))
+    } else if (all(x == 1)) {
+      return(rep(1 - 10^-14, length(x)))
     }
-    x[x == 100] <- as.numeric(quantile(x[x != 100], 1 - q, na.rm = TRUE))
+    x[x == 1] <- as.numeric(quantile(x[x != 1], 1 - q, na.rm = TRUE))
     x[x == 0] <- as.numeric(quantile(x[x != 0], q, na.rm = TRUE))
   }
 
@@ -38,7 +42,7 @@ trim <- function(x, p = 0.1) {
   #'
   #' @description Trim the top and bottom (p*100)% of forecasts
   #'
-  #' @param x Vector of forecasts in 0 to 100 range (%)
+  #' @param x Vector of forecasts in 0 to 1 range
   #' @param p The proportion of forecasts to trim from each end (between 0 and
   #' 1)
   #' @return (numeric) The trimmed mean of the vector
@@ -63,7 +67,7 @@ hd_trim <- function(x, p = 0.1) {
   #' @note As p gets bigger this acts like a mode in a similar way to
   #' the symmetrically-trimmed mean acting like a median.
   #'
-  #' @param x Vector of forecasts in 0 to 100 range (%)
+  #' @param x Vector of forecasts in 0 to 1 range
   #' @param p The proportion of forecasts to trim (between 0 and 1)
   #' @return (numeric) The highest-density trimmed mean of the vector
   #'
@@ -92,7 +96,7 @@ soften_mean <- function(x, p = 0.1) {
   #' @description If the mean is > .5, trim the top trim%; if < .5, the bottom
   #' trim%. Return the new mean (i.e. soften the mean).
   #'
-  #' @param x Vector of forecasts in 0 to 100 range (%)
+  #' @param x Vector of forecasts in 0 to 1 range
   #' @param p The proportion of forecasts to trim from each end (between 0
   #' and 1)
   #' @return (numeric) The softened mean of the vector
@@ -120,7 +124,7 @@ neymanAggCalc <- function(x) {
   #'
   #' where n is the number of forecasts.
   #'
-  #' @param x Vector of forecasts in 0 to 100 range (%)
+  #' @param x Vector of forecasts in 0 to 1 range
   #' @return (numeric) The extremized mean of the vector
   #' @references Neyman, E. and Roughgarden, T. (2021). Are you
   #' smarter than a random expert? The robust aggregation of substitutable
@@ -129,13 +133,12 @@ neymanAggCalc <- function(x) {
   #'
   #' @export
 
-  x <- preprocess(x, q = 0.05)  # replace 0% forecasts with 5th percentile forecast
-  x <- (x / 100)
+  x <- preprocess(x, q = 0.05) # replace 0% forecasts with 5th percentile forecast
   n <- length(x)
   d <- (n * (sqrt((3 * n^2) - (3 * n) + 1) - 2)) / (n^2 - n - 1)
-  logodds <- log(x / (1 - x))  # log odds from probabilities
-  logodds <- mean(logodds) * d  # arithmetic mean, THEN extremize by factor d
-  return(100 * exp(logodds) / (1 + exp(logodds)))  # back to probability
+  logodds <- log(x / (1 - x)) # log odds from probabilities
+  logodds <- mean(logodds) * d # arithmetic mean, THEN extremize by factor d
+  return(exp(logodds) / (1 + exp(logodds))) # back to probability
 }
 
 geoMeanCalc <- function(x, q = 0.05) {
@@ -144,7 +147,7 @@ geoMeanCalc <- function(x, q = 0.05) {
   #' Calculate the geometric mean of a vector of forecasts. We handle 0s by
   #' replacing them with the qth quantile of the non-zero forecasts.
   #'
-  #' @param x Vector of forecasts in 0 to 100 range (%)
+  #' @param x Vector of forecasts in 0 to 1 range
   #' @param q The quantile to use for replacing 0s (between 0 and 1)
   #' @return (numeric) The geometric mean of the vector
   #' @note agg(a) + agg(not a) does not sum to 1 for this aggregation method.
@@ -167,12 +170,11 @@ geoMeanOfOddsCalc <- function(x, q = 0.05, odds = FALSE) {
   #' @param q The quantile to use for replacing 0s (between 0 and 1)
   #' @param odds Whether x is already in odds form (TRUE) or probabilities
   #' @return (numeric) The geometric mean of the odds
-  #' @note agg(a) + agg(not a) does not sum to 1 for this aggregation method.
   #'
   #' @export
 
   if (!odds) {
-    x <- preprocess(x, q) / 100
+    x <- preprocess(x, q)
     odds <- x / (1 - x)
   } else {
     odds <- x
@@ -180,5 +182,5 @@ geoMeanOfOddsCalc <- function(x, q = 0.05, odds = FALSE) {
   geoMeanOfOdds <- exp(mean(log(odds)))
   # Convert back to probability
   geoMeanOfOdds <- geoMeanOfOdds / (geoMeanOfOdds + 1)
-  return(geoMeanOfOdds * 100)
+  return(geoMeanOfOdds)
 }

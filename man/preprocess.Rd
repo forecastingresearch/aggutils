@@ -13,12 +13,12 @@ preprocess(x, q = 0)
 }
 \value{
 A vector of forecasts with 0s are replaced by the qth quantile and
-100s are replaced by the (1 - q)th quantile.
+1s are replaced by the (1 - q)th quantile.
 }
 \description{
 This does the preprocessing steps that all the agg methods
 have in common.
 }
 \note{
-Assumes forecasts are in the range 0 to 100, inclusive.
+Assumes forecasts are in the range 0 to 1, inclusive.
 }

@@ -21,6 +21,3 @@ Convert probabilities to odds, and calculate the geometric mean of the
 odds. We handle 0s by replacing them with the qth quantile of the non-zero
 forecasts, before converting.
 }
-\note{
-agg(a) + agg(not a) does not sum to 1 for this aggregation method.
-}

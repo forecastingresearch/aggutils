@@ -1,6 +1,6 @@
 Package: aggutils
 Title: Utilities for Aggregating Probabilistic Forecasts
-Version: 1.0.2
+Version: 2.0.0
 Authors@R: c(
     person(given = "Molly",
            family = "Hickman",
@@ -22,7 +22,7 @@ Description: Provides several methods for aggregating probabilistic forecasts. Y
 License: MIT + file LICENSE
 Encoding: UTF-8
 Roxygen: list(markdown = TRUE)
-RoxygenNote: 7.2.3
+RoxygenNote: 7.3.1
 Imports: 
     stats,
     docstring

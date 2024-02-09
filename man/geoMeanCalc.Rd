@@ -7,7 +7,7 @@
 geoMeanCalc(x, q = 0.05)
 }
 \arguments{
-\item{x}{Vector of forecasts in 0 to 100 range (\%)}
+\item{x}{Vector of forecasts in 0 to 1 range}
 
 \item{q}{The quantile to use for replacing 0s (between 0 and 1)}
 }
