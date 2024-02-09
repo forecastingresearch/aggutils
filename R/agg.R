@@ -16,7 +16,7 @@ preprocess <- function(x, q = 0) {
   #'
   #' @note Assumes forecasts are in the range 0 to 1, inclusive.
 
-  if (any(x > 1)) {
+  if (any(x > 1) || any(x < 0)) {
     stop("Forecasts must be in the range 0 to 1")
   }
 
